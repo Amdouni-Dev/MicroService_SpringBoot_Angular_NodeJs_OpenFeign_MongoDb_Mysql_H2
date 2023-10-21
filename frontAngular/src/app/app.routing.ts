@@ -11,12 +11,13 @@ const routes: Routes = [
   {path: "",component: AdminLayoutComponent,children: [{path: "",loadChildren: () =>
           import("./layouts/admin-layout/admin-layout.module").then((m) => m.AdminLayoutModule),},],
   },
+  {path: "Object",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
+  import("./Admin/Object/object.module").then((m) => m.ObjectModule),},],
+},
   {path: "Contrat",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
           import("./Admin/Contrat/contrat.module").then((m) => m.ContratModule),},],
   },
-  {path: "Universite",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
-  import("./Admin/Universite/universite.module").then((m) => m.UniversiteModule),},],
-},
+ 
 
 {path: "Departement",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
 import("./Admin/Departement/departement.module").then((m) => m.DepartementModule),},],

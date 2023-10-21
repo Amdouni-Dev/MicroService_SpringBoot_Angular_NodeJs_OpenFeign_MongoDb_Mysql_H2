@@ -33,27 +33,38 @@
                 d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"
               />
             </svg>
-            Ajouter Université
+            Add Object
           </button>
-          <p class="card-category">5 Universités par page, {{ cValue }}</p>
+          <p class="card-category">5 Objects per page, {{ cValue }}</p>
         </div>
         <div class="card-body table-responsive">
           <table class="table table-hover">
             <thead class="text-dark">
-              <th>Nom </th>
+              <th>User Id </th>
+              <th>Name</th>
+              <th>Description </th>
+              <th>Catégorie</th>
+              <th>Date Expiration </th>
+              <th>Status </th>
               <th>Action</th>
             </thead>
             <tbody>
-              <tr *ngFor="let c of universites">
-                <td>{{ c.nomUniv }}</td>
-               
-             
+              <tr *ngFor="let o of objects">
+                <td>{{ o.userId }}</td>
+                <td>{{ o.name }}</td>
+                <td>{{ o.description }}</td>
+                <td>{{o.category}}</td>
+                <td>{{ o.expirationDate }}</td>
+                <td [ngStyle]="{ color: o.status === 'DISPONIBLE' ? 'green' : 'red' }">
+                  {{ o.status }}
+                </td>
+                
                 <td class="td-actions text-left">
                   <button
                     mat-raised-button
                     type="button"
-                    (click)="showUpdateForm(c)"
-                    matTooltip="Modifier Université"
+                    (click)="showUpdateForm(o)"
+                    matTooltip="Update object"
                     [matTooltipPosition]="'above'"
                     class="btn btn-dark btn-link btn-sm btn-just-icon"
                   >
@@ -62,10 +73,10 @@
                   <button
                     mat-raised-button
                     type="button"
-                    matTooltip="Supprimer Université"
+                    matTooltip="Delete Object"
                     [matTooltipPosition]="'above'"
                     class="btn btn-dark btn-link btn-sm btn-just-icon"
-                    (click)="confirmDialog(c.idUniversite)"
+                    (click)="confirmDialog(o.id)"
                   >
                     <i class="material-icons">close</i>
                   </button>
@@ -91,11 +102,11 @@
   </div>
 </div>
 <div *ngIf="clickedAdd">
-  <app-add (list)="addUniversite($event)"></app-add>
+  <app-add (list)="addObject($event)"></app-add>
 </div>
 <div *ngIf="showUpdate">
   <app-update
-    [ctrct]="universiteBinding"
-    (list)="addUniversite($event)"
+    [ctrct]="objectBinding"
+    (list)="addObject($event)"
   ></app-update>
 </div>

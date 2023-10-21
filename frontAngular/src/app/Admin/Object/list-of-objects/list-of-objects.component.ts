@@ -14,22 +14,22 @@ import {AddComponent} from "../add/add.component";
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { ConfirmDialogComponent } from '../../Contrat/confirm-dialog/confirm-dialog.component';
-import { Universite } from 'app/models/Universite';
-import { UniversiteserviceService } from 'app/Services/ServicesUniversite/universiteservice.service';
+import { Object } from 'app/models/Object';
+import { ObjectService } from 'app/Services/ObjectService/objectservice.service';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
-  selector: 'app-list-of-universites',
-  templateUrl: './list-of-universites.component.html',
-  styleUrls: ['./list-of-universites.component.scss']
+  selector: 'app-list-of-objects',
+  templateUrl: './list-of-objects.component.html',
+  styleUrls: ['./list-of-objects.component.scss']
 })
 
 
-export class ListOfUniversitesComponent implements OnInit {
+export class ListOfObjectsComponent implements OnInit {
 
   @NgModule({
-    declarations: [ListOfUniversitesComponent],
-    exports: [ListOfUniversitesComponent],
+    declarations: [ListOfObjectsComponent],
+    exports: [ListOfObjectsComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
   })
 
@@ -39,7 +39,7 @@ export class ListOfUniversitesComponent implements OnInit {
 
   showUpdate=false;
   clickedAdd : boolean = false;
- universiteBinding: any;
+ objectBinding: any;
 
   searchText:string='';
   result: boolean;
@@ -47,7 +47,7 @@ export class ListOfUniversitesComponent implements OnInit {
   currentDate = new Date();
   cValue = formatDate(this.currentDate, 'dd-MM-yyyy', 'en-US');
 
-  universites: Universite[]=[];
+  objects: Object[]=[];
  
   nbrp: number = 1;
   totalElements: any;
@@ -55,17 +55,17 @@ export class ListOfUniversitesComponent implements OnInit {
   pageSize: any;
 
 
-  constructor(private router: Router,private serviceC: UniversiteserviceService, private formBuilder: FormBuilder,
+  constructor(private router: Router,private serviceC: ObjectService, private formBuilder: FormBuilder,
               private dialog: MatDialog) { }
 
 
   ngOnInit(): void {
-    this.ListOfUniversites({page:"0", size:"5"})
+    this.ListOfObjects({page:"0", size:"5"})
    
   }
   
-  showUpdateForm(f:any){
-    this.universiteBinding=f;
+  showUpdateForm(o:any){
+    this.objectBinding=o;
     this.showUpdate=true;
   }
 
@@ -91,9 +91,9 @@ export class ListOfUniversitesComponent implements OnInit {
 
 
   /*****************************Liste Des Contrats********************************/
-  ListOfUniversites(request){
-    this.serviceC.getAllUniversites().subscribe((data)=>{
-      this.universites=data;
+  ListOfObjects(request){
+    this.serviceC.getAllObjects().subscribe((data)=>{
+      this.objects=data;
       this.totalElements=data['totalElements']
       this.pageIndex = data['number']
       this.pageSize = data['size'];
@@ -119,8 +119,8 @@ export class ListOfUniversitesComponent implements OnInit {
       this.result = dialogResult;
       console.log(dialogResult)
       if (this.result==true){
-        this.serviceC.deleteUniversite(id).subscribe((d)=>{
-          this.ListOfUniversites(null)
+        this.serviceC.deleteObject(id).subscribe((d)=>{
+          this.ListOfObjects(null)
           console.log("done")
         })
       }
@@ -132,10 +132,10 @@ export class ListOfUniversitesComponent implements OnInit {
     const request = {};
     request['page'] = event.pageIndex.toString();
     request['size'] = event.pageSize.toString();
-    this.ListOfUniversites(request);
+    this.ListOfObjects(request);
   }
 
-  addUniversite(u:Universite) {
-    this.universites.push(u);
+  addObject(o:Object) {
+    this.objects.push(o);
   }
 }

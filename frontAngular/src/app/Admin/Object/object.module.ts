@@ -25,8 +25,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {ConfirmationDialogComponent } from '../Contrat/confirmation-dialog/confirmation-dialog.component';
 import { FilterPipe } from './Pipes/filter.pipe';
-import { UniversiteRoutingModule } from './universite-routing.module';
-import { ListOfUniversitesComponent } from './list-of-universites/list-of-universites.component';
+import { ObjectRoutingModule } from './object-routing.module';
+import { ListOfObjectsComponent } from './list-of-objects/list-of-objects.component';
 import { AddComponent } from './add/add.component';
 import { UpdateComponent } from './update/update.component';
 
@@ -36,14 +36,14 @@ import { UpdateComponent } from './update/update.component';
   declarations: [
 
     AddComponent,
-    ListOfUniversitesComponent,
+    ListOfObjectsComponent,
     UpdateComponent,
    
   
     FilterPipe
   ],
     imports: [
-        UniversiteRoutingModule,
+        ObjectRoutingModule,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
@@ -89,4 +89,4 @@ import { UpdateComponent } from './update/update.component';
         CUSTOM_ELEMENTS_SCHEMA
     ],
 })
-export class UniversiteModule{}
+export class ObjectModule{}

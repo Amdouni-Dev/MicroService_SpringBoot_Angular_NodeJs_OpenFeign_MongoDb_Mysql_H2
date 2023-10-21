@@ -1,0 +1,121 @@
+<div class="example-container">
+  <br /><br />
+  <h3 class="title">Add a new object!</h3>
+  <br />
+  <div class="form-container">
+    <form name="objectForm" [formGroup]="objectForm" novalidate>
+      <!--Date du contrat-->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>User Id</mat-label>
+        <input type="text" matInput formControlName="userId">
+        <mat-error
+          *ngIf="objectForm.controls.userId.touched && objectForm.controls.userId.hasError('required')"
+        >
+          User Id is required
+        </mat-error>
+      </mat-form-field>
+     
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name">
+        <mat-error
+          *ngIf="objectForm.controls.name.touched && objectForm.controls.name.hasError('required')">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Description</mat-label>
+        <input type="text" matInput formControlName="description">
+        <mat-error
+          *ngIf="objectForm.controls.description.touched && objectForm.controls.description.hasError('required')">
+          Description is required
+        </mat-error>
+      </mat-form-field>
+    
+
+
+
+  
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Catégorie</mat-label>
+        <mat-select formControlName="category" required>
+          <mat-option *ngFor="let spec of categories" [value]="spec.value">
+            {{ spec.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="
+          objectForm.controls.category.touched &&
+          objectForm.controls.category.invalid
+          "
+        >
+          <span *ngIf="objectForm.controls.category.errors.required"
+            >Category is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field color="accent" class="form-field" appearance="outline">
+        <mat-label>Date Exipration</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker1"
+          formControlName="expirationDate"
+          required
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <mat-error
+          *ngIf="
+          objectForm.controls.status.touched &&
+          objectForm.controls.status.invalid
+          ">
+          <span *ngIf="objectForm.controls.status.errors.required"
+            >Expiration Date is required </span
+          >
+        </mat-error>
+      </mat-form-field>
+
+
+
+
+
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option *ngFor="let spec of status" [value]="spec.value">
+            {{ spec.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="
+          objectForm.controls.status.touched &&
+          objectForm.controls.status.invalid
+          "
+        >
+          <span *ngIf="objectForm.controls.status.errors.required"
+            >Status is required</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+   
+      <button
+        mat-raised-button
+        color="accent"
+        [disabled]="objectForm.invalid"
+        (click)="submit(objectForm.value)"
+      >
+        Valider
+      </button>
+      <button mat-raised-button [mat-dialog-close] class="log">Close</button>
+    </form>
+    <br /><br /><br />
+  </div>
+</div>

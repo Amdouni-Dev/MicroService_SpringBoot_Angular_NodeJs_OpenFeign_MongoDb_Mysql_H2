@@ -29,7 +29,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ConfirmDialogComponent } from "./Admin/Contrat/confirm-dialog/confirm-dialog.component";
-import { UniversiteModule } from "./Admin/Universite/universite.module";
+import { ObjectModule } from "./Admin/Object/object.module";
 import { ConfirmationDialogComponent } from "./Admin/Contrat/confirmation-dialog/confirmation-dialog.component";
 
 

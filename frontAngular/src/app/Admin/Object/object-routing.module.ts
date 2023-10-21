@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {ListOfUniversitesComponent} from "./list-of-universites/list-of-universites.component";
+import {ListOfObjectsComponent} from "./list-of-objects/list-of-objects.component";
 import {AddComponent} from "./add/add.component";
 import {ConfirmationDialogComponent } from '../Contrat/confirmation-dialog/confirmation-dialog.component';
 
 const routes: Routes=[
-  {path:"", component:ListOfUniversitesComponent},
+  {path:"", component:ListOfObjectsComponent},
     {path:"addP", component:AddComponent},
     {path:"dialog", component: ConfirmationDialogComponent}
 ]
@@ -17,4 +17,4 @@ const routes: Routes=[
   exports: [RouterModule],
 
 })
-export class UniversiteRoutingModule { }
+export class ObjectRoutingModule { }
