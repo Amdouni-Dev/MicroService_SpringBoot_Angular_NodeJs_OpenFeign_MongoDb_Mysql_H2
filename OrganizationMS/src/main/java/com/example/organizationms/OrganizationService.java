@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrganizationService {
 
+    @Autowired
+    private EventService eventService;
     @Autowired
     private OrganizationRepository organizationRepository;
 
@@ -43,5 +46,11 @@ public class OrganizationService {
             organization.setArchived(true);
             organizationRepository.save(organization);
         }
+    }
+
+    public List<Event> getOrganizationWithEvents(Long orgId) {
+        Optional<Organization> organization = organizationRepository.findById(orgId);
+        List<Event> events = eventService.getEventsByOrganization(orgId);
+        return events;
     }
 }

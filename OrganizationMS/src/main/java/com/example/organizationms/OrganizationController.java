@@ -1,6 +1,9 @@
 package com.example.organizationms;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,8 +13,10 @@ import java.util.List;
 public class OrganizationController {
     @Autowired
     private OrganizationService organizationService;
-
-
+    @Autowired
+    private EventService eventService;
+    @Autowired
+    private ObjectService objectService;
 
     @GetMapping("/")
     public List<Organization> getAllOrganizations() {
@@ -36,5 +41,17 @@ public class OrganizationController {
     @DeleteMapping("/{id}")
     public void deleteOrganization(@PathVariable Long id) {
         organizationService.deleteOrganization(id);
+    }
+
+    @GetMapping("/events/org/{orgId}")
+    public ResponseEntity<List<Event>> getEventsByOrganization(@PathVariable Long orgId){
+        return new ResponseEntity<List<Event>>(eventService.getEventsByOrganization(orgId), HttpStatus.OK);
+    }
+
+    @GetMapping("/api/objects/getByOrganization/{organizationId}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<List<Object>> findObjectsByOrganization(@PathVariable Long organizationId ) {
+
+        return new ResponseEntity<>(objectService.getObjectsByOrganization(organizationId), HttpStatus.OK);
     }
 }
