@@ -63,4 +63,15 @@ public class ObjectService {
 
         return objects;
     }
+
+    public List<Object> getObjectsByOrganization(Long organizationId) {
+
+        List<Object> objects = objectRepository.findByOrganizationId(organizationId);
+
+        if (objects.isEmpty()) {
+            System.out.println("Pas d'objets pour cette organisation.");
+        }
+
+        return objects;
+    }
 }

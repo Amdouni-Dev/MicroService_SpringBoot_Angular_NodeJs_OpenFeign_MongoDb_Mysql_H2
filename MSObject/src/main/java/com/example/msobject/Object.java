@@ -25,6 +25,16 @@ public class Object implements Serializable {
     @Enumerated(EnumType.STRING)
     StatusEnum status;
 
+    private Long organizationId;
+
+    public Long getOrganizationId() {
+        return organizationId;
+    }
+
+    public void setOrganizationId(Long organizationId) {
+        this.organizationId = organizationId;
+    }
+
     public Object() {
         super();
     }

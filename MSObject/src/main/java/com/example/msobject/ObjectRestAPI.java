@@ -19,9 +19,6 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value="/api/objects")
 public class ObjectRestAPI {
-
-
-
     @Autowired
     private ObjectService objectService;
 
@@ -31,14 +28,12 @@ public class ObjectRestAPI {
         return new ResponseEntity<>(objectService.addObject(Object), HttpStatus.OK);
     }
 
-
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Object> updateObject(@PathVariable(value = "id") int id,
                                                    @RequestBody Object Object){
         return new ResponseEntity<>(objectService.updateObject(id, Object), HttpStatus.OK);
     }
-
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
@@ -50,7 +45,6 @@ public class ObjectRestAPI {
     public ResponseEntity<List<Object>> getAllObjects() {
         return new ResponseEntity<>(objectService.getAllObjects(), HttpStatus.OK);
     }
-
 
     @GetMapping(value="getAllObjects/{pageNo}/{pageSize}",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
@@ -83,5 +77,10 @@ public class ObjectRestAPI {
 
     }
 
+    @GetMapping(value = "/getByOrganization/{organizationId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<List<Object>> findObjectsByOrganization(@PathVariable Long organizationId ) {
 
+        return new ResponseEntity<>(objectService.getObjectsByOrganization(organizationId), HttpStatus.OK);
+    }
 }
