@@ -12,18 +12,20 @@ public class EventModel {
     private String lieu;
     private String description;
 
+    private Long organizationId;
     @Temporal(TemporalType.TIMESTAMP)
     private Date start;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date end;
 
-    public EventModel(String nomEvent, String lieu, String description, Date start, Date end) {
+    public EventModel(String nomEvent, String lieu, String description, Date start, Date end, Long organizationId) {
         this.nomEvent = nomEvent;
         this.lieu = lieu;
         this.description = description;
         this.start = start;
         this.end = end;
+        this.organizationId=organizationId;
     }
 
     public EventModel() {
@@ -71,5 +73,13 @@ public class EventModel {
 
     public void setEnd(Date end) {
         this.end = end;
+    }
+
+    public Long getOrganizationId() {
+        return organizationId;
+    }
+
+    public void setOrganizationId(Long id) {
+        this.organizationId = id;
     }
 }

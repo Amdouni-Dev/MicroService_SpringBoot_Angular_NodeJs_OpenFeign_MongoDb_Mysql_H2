@@ -72,6 +72,10 @@ public class EventRestApi {
         return simpleHelloMessage;
     }
 
+    @GetMapping("/org/{orgId}")
+    public ResponseEntity<List<EventModel>> getOrganizationsByUserId(@PathVariable Long orgId){
+        return new ResponseEntity<List<EventModel>>(eventService.getEventsByOrganization(orgId), HttpStatus.OK);
+    }
 
 
 }

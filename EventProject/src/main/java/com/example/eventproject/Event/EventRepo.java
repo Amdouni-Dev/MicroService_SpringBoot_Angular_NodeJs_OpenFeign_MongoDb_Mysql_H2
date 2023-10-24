@@ -19,5 +19,6 @@ public interface EventRepo extends JpaRepository<EventModel,Long> {
     long countEvents();
 
 
+    List<EventModel> findByOrganizationId(Long orgId);
 
 }

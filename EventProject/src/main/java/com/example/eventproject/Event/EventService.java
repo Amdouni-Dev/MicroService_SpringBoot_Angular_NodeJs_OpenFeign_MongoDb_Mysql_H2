@@ -47,4 +47,7 @@ public class EventService {
     }
 
 
+    public List<EventModel> getEventsByOrganization(Long orgId) {
+        return eventRepo.findByOrganizationId(orgId);
+    }
 }
