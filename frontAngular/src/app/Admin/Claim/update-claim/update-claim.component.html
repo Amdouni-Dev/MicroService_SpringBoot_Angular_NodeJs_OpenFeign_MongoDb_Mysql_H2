@@ -1,0 +1,37 @@
+<div class="example-container">
+    <br /><br />
+    <h3 class="title">Mettre A Jour Votre Réclamation !</h3>
+    <br />
+    <div class="form-container">
+        <form name="claimForm" [formGroup]="claimForm" novalidate>
+
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Subject</mat-label>
+                <input matInput formControlName="subject"  required>
+                <mat-error *ngIf="claimForm?.controls.subject?.touched && claimForm?.controls.subject?.invalid">
+                    <span *ngIf="claimForm?.controls.subject?.errors?.required">Veuillez saisir votre sujet.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Content</mat-label>
+                <textarea matInput formControlName="content"  required></textarea>
+                <mat-error *ngIf="claimForm?.controls.content?.touched && claimForm?.controls.subject?.invalid">
+                    <span *ngIf="claimForm?.controls.content?.errors?.required">Veuillez saisir votre contenu de réclamation.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <!-- <button (click)="onError()"></button> -->
+            <button
+                    mat-raised-button
+                    color="accent"
+                    [disabled]="claimForm.invalid"
+                    (click)="updateClaim(claimForm.value)"
+            >
+                Valider
+            </button>
+            <button mat-raised-button [mat-dialog-close] class="log">Close</button>
+        </form>
+        <br /><br /><br />
+    </div>
+</div>

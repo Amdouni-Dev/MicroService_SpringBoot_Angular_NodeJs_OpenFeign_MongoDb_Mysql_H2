@@ -6,7 +6,7 @@
           <h3 class="title">Mettre à jour votre Contrat !</h3>
           <br />
           <div class="form-container">
-            <form name="contractForm" [formGroup]="contractForm" novalidate>
+            <form name="claimForm" [formGroup]="claimForm" novalidate>
               <!--Date du contrat-->
               <mat-form-field
                 color="accent"
@@ -28,13 +28,13 @@
                 <mat-datepicker #picker1></mat-datepicker>
                 <mat-error
                   *ngIf="
-                    contractForm.controls.dateDebutContrat.touched &&
-                    contractForm.controls.dateDebutContrat.invalid
+                    claimForm.controls.dateDebutContrat.touched &&
+                    claimForm.controls.dateDebutContrat.invalid
                   "
                 >
                   <span
                     *ngIf="
-                      contractForm.controls.dateDebutContrat.errors.required
+                      claimForm.controls.dateDebutContrat.errors.required
                     "
                     >Veuillez choisir une date.</span
                   >
@@ -61,12 +61,12 @@
                 <mat-datepicker #picker2 color="primary"></mat-datepicker>
                 <mat-error
                   *ngIf="
-                    contractForm.controls.dateFinContrat.touched &&
-                    contractForm.controls.dateFinContrat.invalid
+                    claimForm.controls.dateFinContrat.touched &&
+                    claimForm.controls.dateFinContrat.invalid
                   "
                 >
                   <span
-                    *ngIf="contractForm.controls.dateFinContrat.errors.required"
+                    *ngIf="claimForm.controls.dateFinContrat.errors.required"
                     >Veuillez choisir une date.</span
                   >
                 </mat-error>
@@ -89,11 +89,11 @@
                 </mat-select>
                 <mat-error
                   *ngIf="
-                    contractForm.controls.specialite.touched &&
-                    contractForm.controls.specialite.invalid
+                    claimForm.controls.specialite.touched &&
+                    claimForm.controls.specialite.invalid
                   "
                 >
-                  <span *ngIf="contractForm.controls.specialite.errors.required"
+                  <span *ngIf="claimForm.controls.specialite.errors.required"
                     >Veuillez choisir une option.</span
                   >
                 </mat-error>
@@ -122,12 +122,12 @@
                 </mat-select>
                 <mat-error
                   *ngIf="
-                    contractForm.controls.montantContrat.touched &&
-                    contractForm.controls.montantContrat.invalid
+                    claimForm.controls.montantContrat.touched &&
+                    claimForm.controls.montantContrat.invalid
                   "
                 >
                   <span
-                    *ngIf="contractForm.controls.montantContrat.errors.required"
+                    *ngIf="claimForm.controls.montantContrat.errors.required"
                     >Veuillez choisir une option.</span
                   >
                 </mat-error>
@@ -136,8 +136,8 @@
               <button
                 mat-raised-button
                 color="accent"
-                [disabled]="contractForm.invalid"
-                (click)="updateContract(contractForm.value)"
+                [disabled]="claimForm.invalid"
+                (click)="updateContract(claimForm.value)"
               >
                 Valider
               </button>

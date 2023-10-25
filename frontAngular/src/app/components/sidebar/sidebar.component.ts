@@ -17,6 +17,7 @@ export const ROUTES: RouteInfo[] = [
   { path: "/Departement", title: "Departements", icon: "apartment", class: "" },
 
   { path: "/Contrat", title: "Contrats", icon: "wysiwyg", class: "" },
+  { path: "/Claim", title: "Claims", icon: "wysiwyg", class: "" },
 
 
   

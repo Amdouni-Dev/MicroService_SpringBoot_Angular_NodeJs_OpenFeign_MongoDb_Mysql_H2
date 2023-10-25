@@ -11,6 +11,13 @@ const routes: Routes = [
   {path: "",component: AdminLayoutComponent,children: [{path: "",loadChildren: () =>
           import("./layouts/admin-layout/admin-layout.module").then((m) => m.AdminLayoutModule),},],
   },
+
+
+  {path: "Claim",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
+          import("./Admin/Claim/claim.module").then((m) => m.ClaimModule),},],
+  },
+
+
   {path: "Contrat",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
           import("./Admin/Contrat/contrat.module").then((m) => m.ContratModule),},],
   },

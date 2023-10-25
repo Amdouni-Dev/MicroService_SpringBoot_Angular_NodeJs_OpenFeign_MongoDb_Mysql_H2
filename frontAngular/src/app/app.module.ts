@@ -24,13 +24,14 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatTableModule } from "@angular/material/table";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { MatCardModule } from "@angular/material/card";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ConfirmDialogComponent } from "./Admin/Contrat/confirm-dialog/confirm-dialog.component";
-import { UniversiteModule } from "./Admin/Universite/universite.module";
 import { ConfirmationDialogComponent } from "./Admin/Contrat/confirmation-dialog/confirmation-dialog.component";
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -40,7 +41,7 @@ import { ConfirmationDialogComponent } from "./Admin/Contrat/confirmation-dialog
  AdminLayoutComponent,
  ConfirmDialogComponent,
  ConfirmationDialogComponent,
-    ],  
+    ],
     providers: [],
     bootstrap: [AppComponent],
     imports: [
@@ -69,12 +70,13 @@ import { ConfirmationDialogComponent } from "./Admin/Contrat/confirmation-dialog
         MatCheckboxModule,
         MatDialogModule,
         MatTableModule,
-        MatInputModule, 
-      
-      
-        MatCardModule,     
+        MatInputModule,
+
+
+        MatCardModule,
         MatTooltipModule,
         DragDropModule,
+        MatPaginatorModule,
     ]
 })
 export class AppModule {}

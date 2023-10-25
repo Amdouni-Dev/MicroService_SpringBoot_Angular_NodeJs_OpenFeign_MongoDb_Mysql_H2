@@ -13,7 +13,7 @@ export class UpdateComponent implements OnInit {
 
   @Output() requested = new EventEmitter<any>();
   @Input()ctrct:any;
-  contractForm: FormGroup;
+  claimForm: FormGroup;
   prixGroups:PrixGroup[]=[]
 
   constructor(private cService: ContratService, private _formBuilder:FormBuilder,private _routerUp: Router) { }
@@ -21,7 +21,7 @@ export class UpdateComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.contractForm = this._formBuilder.group({
+    this.claimForm = this._formBuilder.group({
       dateDebutContrat: ['', Validators.required],
       dateFinContrat: ['', Validators.required],
       specialite: ['', Validators.required],

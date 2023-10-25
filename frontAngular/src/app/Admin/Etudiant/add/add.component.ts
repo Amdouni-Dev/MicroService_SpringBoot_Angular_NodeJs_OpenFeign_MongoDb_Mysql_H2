@@ -43,7 +43,7 @@ selected: Date | null;
           
       })
 
-      // this.contractForm=this._formBuilder.group({
+      // this.claimForm=this._formBuilder.group({
       //     dateDC: this.data.dateDC ? this.data.dateDC:'',
       //     dateFC:this.data.dateFC ? this.data.dateFC:'',
       //     specialite:this.data.specialite ? this.data.specialite:'',

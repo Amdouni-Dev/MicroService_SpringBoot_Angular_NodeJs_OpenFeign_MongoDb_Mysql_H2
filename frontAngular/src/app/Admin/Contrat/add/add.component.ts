@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-  contractForm: FormGroup;
+  claimForm: FormGroup;
   prixControl:FormControl;
   prixGroups:PrixGroup[]=[]
   contrat:Contrat;
@@ -39,14 +39,14 @@ selected: Date | null;
           console.log(data)
       })
 
-      this.contractForm = this._formBuilder.group({
+      this.claimForm = this._formBuilder.group({
           dateDebutContrat: ['', Validators.required],
           dateFinContrat: ['', Validators.required],
           specialite: ['', Validators.required],
           montantContrat: ['', Validators.required],
       })
 
-      // this.contractForm=this._formBuilder.group({
+      // this.claimForm=this._formBuilder.group({
       //     dateDC: this.data.dateDC ? this.data.dateDC:'',
       //     dateFC:this.data.dateFC ? this.data.dateFC:'',
       //     specialite:this.data.specialite ? this.data.specialite:'',
