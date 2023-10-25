@@ -162,6 +162,10 @@ async function getAccessToken(username, password) {
 
 
 
+app.use('/secure-path', keycloak.protect('admin'));
+
+// Proxy inverse pour rediriger le chemin vers http://localhost:8989
+app.use('/secure-path', createProxyMiddleware({ target: 'http://localhost:8989', changeOrigin: true }));
 
 
 

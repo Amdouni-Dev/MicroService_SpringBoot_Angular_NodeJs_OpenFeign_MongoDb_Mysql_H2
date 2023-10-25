@@ -23,7 +23,10 @@ public class ClaimService {
     }
 
     public Claim updateClaim(Long id,Claim claim) {
-        claimRepository.save(claim);
+        if (claimRepository.existsById(id)) {
+            claim.setId(id);
+            claimRepository.save(claim);
+        }
         return claim;
     }
 

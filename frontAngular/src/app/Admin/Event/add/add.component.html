@@ -1,0 +1,84 @@
+<div class="example-container">
+  <br /><br />
+  <h3 class="title">Ajouter un Nouvel Événement !</h3>
+  <br />
+  <div class="form-container">
+    <form name="eventForm" [formGroup]="eventForm" novalidate>
+      <!-- Nom de l'événement -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Nom de l'événement</mat-label>
+        <input type="text" matInput formControlName="nomEvent" required>
+        <mat-error
+                *ngIf="eventForm.controls.nomEvent.touched && eventForm.controls.nomEvent.invalid"
+        >
+          <span *ngIf="eventForm.controls.nomEvent.errors.required"
+          >Veuillez entrer un nom pour l'événement</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Lieu de l'événement -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Lieu de l'événement</mat-label>
+        <input type="text" matInput formControlName="lieu" required>
+        <mat-error
+                *ngIf="eventForm.controls.lieu.touched && eventForm.controls.lieu.invalid"
+        >
+          <span *ngIf="eventForm.controls.lieu.errors.required"
+          >Veuillez entrer un lieu pour l'événement</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Description de l'événement -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Description de l'événement</mat-label>
+        <textarea matInput formControlName="description" required></textarea>
+        <mat-error
+                *ngIf="eventForm.controls.description.touched && eventForm.controls.description.invalid"
+        >
+          <span *ngIf="eventForm.controls.description.errors.required"
+          >Veuillez entrer une description pour l'événement</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Date de début de l'événement -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Date de début</mat-label>
+        <input type="date" matInput formControlName="start" required>
+        <mat-error
+                *ngIf="eventForm.controls.start.touched && eventForm.controls.start.invalid"
+        >
+          <span *ngIf="eventForm.controls.start.errors.required"
+          >Veuillez choisir une date de début</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Date de fin de l'événement -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Date de fin</mat-label>
+        <input type="date" matInput formControlName="end" required>
+        <mat-error
+                *ngIf="eventForm.controls.end.touched && eventForm.controls.end.invalid"
+        >
+          <span *ngIf="eventForm.controls.end.errors.required"
+          >Veuillez choisir une date de fin</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <button
+              mat-raised-button
+              color="accent"
+              [disabled]="eventForm.invalid"
+              (click)="submit()"
+      >
+        Valider
+      </button>
+      <button mat-raised-button [mat-dialog-close] class="log">Fermer</button>
+    </form>
+    <br /><br /><br />
+  </div>
+</div>

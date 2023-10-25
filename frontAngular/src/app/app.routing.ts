@@ -11,25 +11,26 @@ const routes: Routes = [
   {path: "",component: AdminLayoutComponent,children: [{path: "",loadChildren: () =>
           import("./layouts/admin-layout/admin-layout.module").then((m) => m.AdminLayoutModule),},],
   },
-  {path: "Contrat",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
-          import("./Admin/Contrat/contrat.module").then((m) => m.ContratModule),},],
+  {path: "Object",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
+  import("./Admin/Object/object.module").then((m) => m.ObjectModule),},],
+},
+{path: "Blog",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
+import("./Admin/Blog/blog.module").then((m) => m.BlogModule),},],
+},
+ 
+
+{path: "Claim",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
+          import("./Admin/Claim/claim.module").then((m) => m.ClaimModule),},],
   },
-  {path: "Universite",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
-  import("./Admin/Universite/universite.module").then((m) => m.UniversiteModule),},],
-},
 
-{path: "Departement",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
-import("./Admin/Departement/departement.module").then((m) => m.DepartementModule),},],
-},
-  
 
-{path: "Equipe",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
-import("./Admin/Equipe/equipe.module").then((m) => m.EquipeModule),},],
-},
+  {path: "Event",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
+          import("./Admin/Event/equipe.module").then((m) => m.EquipeModule),},],
+  },
 
-{path: "Etudiant",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
-import("./Admin/Etudiant/etudiant.module").then((m) => m.EtudiantModule),},],
-},
+  {path: "Organization",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
+  import("./Admin/Organization/organization.module").then((m) => m.OrganizationModule),},],
+  },
 
 
 ];

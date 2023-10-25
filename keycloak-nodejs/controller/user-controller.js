@@ -79,4 +79,7 @@ router.delete('/user/:id',keycloak.protect('admin'),function (req,res){
     });
 });
 
+
+
+
 module.exports = router;

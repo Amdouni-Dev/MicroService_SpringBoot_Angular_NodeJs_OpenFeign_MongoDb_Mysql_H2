@@ -1,0 +1,219 @@
+<div class="container-fluid" id="updateComp">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-warning w-50 p-3">
+        <div class="card-header card-header">
+          <h3 class="title">Update your organization</h3>
+          <br />
+          <div class="form-container">
+            <form
+              name="organizationForm"
+              [formGroup]="organizationForm"
+              novalidate
+            >
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="name"
+                  required
+                  [(ngModel)]="ctrct.name"
+                />
+
+                <mat-error
+                  *ngIf="
+                    organizationForm.controls.name.touched &&
+                    organizationForm.controls.name.invalid
+                  "
+                >
+                  <span *ngIf="organizationForm.controls.type.errors.required"
+                    >Enter a name for your organization</span
+                  >
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Type</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="type"
+                  required
+                  [(ngModel)]="ctrct.type"
+                />
+
+                <mat-error
+                  *ngIf="
+                    organizationForm.controls.type.touched &&
+                    organizationForm.controls.type.invalid
+                  "
+                >
+                  <span *ngIf="organizationForm.controls.type.errors.required"
+                    >Enter a type for your organization</span
+                  >
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Location</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="location"
+                  required
+                  [(ngModel)]="ctrct.location"
+                />
+
+                <mat-error
+                  *ngIf="
+                    organizationForm.controls.location.touched &&
+                    organizationForm.controls.location.invalid
+                  "
+                >
+                  <span
+                    *ngIf="organizationForm.controls.location.errors.required"
+                    >Enter a location for your organization</span
+                  >
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="phoneNumber"
+                  required
+                  [(ngModel)]="ctrct.phoneNumber"
+                />
+
+                <mat-error
+                  *ngIf="
+                    organizationForm.controls.phoneNumber.touched &&
+                    organizationForm.controls.phoneNumber.invalid
+                  "
+                >
+                  <span
+                    *ngIf="
+                      organizationForm.controls.phoneNumber.errors.required
+                    "
+                    >Enter a phone number for your organization</span
+                  >
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="email"
+                  required
+                  [(ngModel)]="ctrct.email"
+                />
+
+                <mat-error
+                  *ngIf="
+                    organizationForm.controls.email.touched &&
+                    organizationForm.controls.email.invalid
+                  "
+                >
+                  <span *ngIf="organizationForm.controls.email.errors.required"
+                    >Enter an email for your organization</span
+                  >
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Website</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="website"
+                  required
+                  [(ngModel)]="ctrct.website"
+                />
+
+                <mat-error
+                  *ngIf="
+                    organizationForm.controls.website.touched &&
+                    organizationForm.controls.website.invalid
+                  "
+                >
+                  <span
+                    *ngIf="organizationForm.controls.website.errors.required"
+                    >Enter a website for your organization</span
+                  >
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Description</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="description"
+                  required
+                  [(ngModel)]="ctrct.description"
+                />
+
+                <mat-error
+                  *ngIf="
+                    organizationForm.controls.description.touched &&
+                    organizationForm.controls.description.invalid
+                  "
+                >
+                  <span
+                    *ngIf="
+                      organizationForm.controls.description.errors.required
+                    "
+                    >Enter a description for your organization</span
+                  >
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Description</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="description"
+                  required
+                  [(ngModel)]="ctrct.description"
+                />
+
+                <mat-error
+                  *ngIf="
+                    organizationForm.controls.description.touched &&
+                    organizationForm.controls.description.invalid
+                  "
+                >
+                  <span
+                    *ngIf="
+                      organizationForm.controls.description.errors.required
+                    "
+                    >Enter a description for your organization</span
+                  >
+                </mat-error>
+              </mat-form-field>
+
+              <button
+                mat-raised-button
+                color="accent"
+                [disabled]="organizationForm.invalid"
+                (click)="updateOrganization(organizationForm.value)"
+              >
+                Valider
+              </button>
+              <button mat-raised-button [mat-dialog-close] class="log">
+                Close
+              </button>
+            </form>
+            <br /><br /><br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

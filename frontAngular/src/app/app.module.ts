@@ -22,15 +22,14 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatTableModule } from "@angular/material/table";
-
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { MatCardModule } from "@angular/material/card";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { ConfirmDialogComponent } from "./Admin/Contrat/confirm-dialog/confirm-dialog.component";
-import { UniversiteModule } from "./Admin/Universite/universite.module";
-import { ConfirmationDialogComponent } from "./Admin/Contrat/confirmation-dialog/confirmation-dialog.component";
+import { ObjectModule } from "./Admin/Object/object.module";
+import { ConfirmDialogComponent } from "./Admin/Blog/confirm-dialog/confirm-dialog.component";
+import { ConfirmationDialogComponent } from "./Admin/Blog/confirmation-dialog/confirmation-dialog.component";
 
 
 

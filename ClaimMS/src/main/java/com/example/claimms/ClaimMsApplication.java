@@ -24,9 +24,9 @@ public class ClaimMsApplication {
     @Bean
     ApplicationRunner init() {
         return (args) -> {
-//            repository.save(new Claim("Hello", "Je veux par ",date ));
-//            repository.save(new Claim("Hello2", "123",date));
-//            repository.findAll().forEach(System.out::println);
+         // repository.save(new Claim("Hello", "Je veux par ",date ));
+         // repository.save(new Claim("Hello2", "123",date));
+         // repository.findAll().forEach(System.out::println);
         };
     }
 }

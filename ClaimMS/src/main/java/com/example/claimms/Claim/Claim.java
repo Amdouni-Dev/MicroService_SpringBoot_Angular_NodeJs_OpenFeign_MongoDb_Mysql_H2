@@ -34,6 +34,10 @@ public class Claim implements Serializable {
         return subject;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setSubject(String subject) {
         this.subject = subject;
     }

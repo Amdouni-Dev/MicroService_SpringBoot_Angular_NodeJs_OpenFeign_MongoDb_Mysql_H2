@@ -1,0 +1,84 @@
+<div class="container-fluid" id="updateComp">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-warning w-50 p-3">
+        <div class="card-header card-header">
+          <h3 class="title">Mettre à jour votre Contrat !</h3>
+          <br />
+          <div class="form-container">
+            <form name="equipeForm" [formGroup]="equipeForm" novalidate>
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Nom de l'événement</mat-label>
+                <input type="text" matInput formControlName="nomEvent" required [(ngModel)]="ctrct.nomEvent">
+                <mat-error *ngIf="equipeForm.controls.nomEvent.touched && equipeForm.controls.nomEvent.invalid">
+                  <span *ngIf="equipeForm.controls.nomEvent.errors.required">Veuillez entrer un nom pour l'événement</span>
+                </mat-error>
+              </mat-form-field>
+
+              <!-- Lieu de l'événement -->
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Lieu de l'événement</mat-label>
+                <input type="text" matInput formControlName="lieu" required [(ngModel)]="ctrct.lieu">
+                <mat-error *ngIf="equipeForm.controls.lieu.touched && equipeForm.controls.lieu.invalid">
+                  <span *ngIf="equipeForm.controls.lieu.errors.required">Veuillez entrer un lieu pour l'événement</span>
+                </mat-error>
+              </mat-form-field>
+
+              <!-- Description de l'événement -->
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Description de l'événement</mat-label>
+                <textarea matInput formControlName="description" required [(ngModel)]="ctrct.description"></textarea>
+                <mat-error *ngIf="equipeForm.controls.description.touched && equipeForm.controls.description.invalid">
+                  <span *ngIf="equipeForm.controls.description.errors.required">Veuillez entrer une description pour l'événement</span>
+                </mat-error>
+              </mat-form-field>
+
+              <!-- Date de début de l'événement -->
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Date de début (JJ-MM-AAAATHH:MM:SS)</mat-label>
+                <input type="datetime-local" matInput formControlName="start" required [(ngModel)]="ctrct.start">
+              </mat-form-field>
+
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Date de fin (JJ-MM-AAAATHH:MM:SS)</mat-label>
+                <input type="datetime-local" matInput formControlName="end" required [(ngModel)]="ctrct.end">
+              </mat-form-field>
+
+<!--              &lt;!&ndash;Specialite du Contrat&ndash;&gt;-->
+<!--              <mat-form-field class="form-field" appearance="outline">-->
+<!--                <mat-label>Niveau</mat-label>-->
+<!--                <mat-select formControlName="niveau" required  [(ngModel)]="ctrct.niveau">-->
+<!--                  <mat-option *ngFor="let spec of niveaux" [value]="spec.value">-->
+<!--                    {{ spec.viewValue }}-->
+<!--                  </mat-option>-->
+<!--                </mat-select>-->
+<!--                <mat-error-->
+<!--                  *ngIf="-->
+<!--                    equipeForm.controls.niveau.touched &&-->
+<!--                    equipeForm.controls.niveau.invalid-->
+<!--                  "-->
+<!--                >-->
+<!--                  <span *ngIf="equipeForm.controls.niveau.errors.required"-->
+<!--                    >Veuillez choisir une option.</span-->
+<!--                  >-->
+<!--                </mat-error>-->
+<!--              </mat-form-field>-->
+              <button
+                mat-raised-button
+                color="accent"
+                [disabled]="equipeForm.invalid"
+                (click)="updateEquipe(equipeForm.value)"
+              >
+                Valider
+              </button>
+              <button mat-raised-button [mat-dialog-close] class="log">
+                Close
+              </button>
+            </form>
+            <br /><br /><br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

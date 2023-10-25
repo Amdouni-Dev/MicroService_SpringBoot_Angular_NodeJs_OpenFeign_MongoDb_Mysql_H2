@@ -1,0 +1,92 @@
+<div class="container-fluid" id="updateComp">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-warning w-50 p-3">
+        <div class="card-header card-header">
+          <h3 class="title">Update your blog !</h3>
+          <br />
+          <div class="form-container">
+            <form title="blogForm" [formGroup]="blogForm" novalidate>
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status" required [(ngModel)]="ctrct.status">
+                  <mat-option *ngFor="let spec of status" [value]="spec.value">
+                    {{ spec.viewValue }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="
+                    blogForm.controls.status.touched &&
+                    blogForm.controls.status.invalid
+                  "
+                >
+                  <span *ngIf="blogForm.controls.status.errors.required"
+                    >Pick blog status</span
+                  >
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Title</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="title"
+                  required
+                  [(ngModel)]="ctrct.title"
+                />
+
+                <mat-error
+                  *ngIf="
+                    blogForm.controls.title.touched &&
+                    blogForm.controls.title.invalid
+                  "
+                >
+                  <span *ngIf="blogForm.controls.type.errors.required"
+                    >Enter a title for your organization</span
+                  >
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Content</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="content"
+                  required
+                  [(ngModel)]="ctrct.content"
+                />
+
+                <mat-error
+                  *ngIf="
+                    blogForm.controls.content.touched &&
+                    blogForm.controls.content.invalid
+                  "
+                >
+                  <span *ngIf="blogForm.controls.type.errors.required"
+                    >Enter a content for your blog</span
+                  >
+                </mat-error>
+              </mat-form-field>
+
+              <!-- <button (click)="onError()"></button> -->
+              <button
+                mat-raised-button
+                color="accent"
+                [disabled]="blogForm.invalid"
+                (click)="updateBlog(blogForm.value)"
+              >
+                Validate
+              </button>
+              <button mat-raised-button [mat-dialog-close] class="log">
+                Close
+              </button>
+            </form>
+            <br /><br /><br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
