@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Date;
+
 @SpringBootApplication
 @EnableEurekaClient
 public class ClaimMsApplication {
@@ -18,13 +20,13 @@ public class ClaimMsApplication {
     }
     @Autowired
     private ClaimRepository repository;
-
+    Date date = new Date();
     @Bean
     ApplicationRunner init() {
         return (args) -> {
-            repository.save(new Claim("Hello", "Je veux par "));
-            repository.save(new Claim("Hello2", "123"));
-            repository.findAll().forEach(System.out::println);
+//            repository.save(new Claim("Hello", "Je veux par ",date ));
+//            repository.save(new Claim("Hello2", "123",date));
+//            repository.findAll().forEach(System.out::println);
         };
     }
 }

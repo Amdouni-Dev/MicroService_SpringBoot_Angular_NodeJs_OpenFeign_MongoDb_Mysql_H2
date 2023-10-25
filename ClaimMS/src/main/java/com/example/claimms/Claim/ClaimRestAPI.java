@@ -6,27 +6,34 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+@RequestMapping("/claims")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClaimRestAPI {
 
     @Autowired
     private ClaimService claimService;
 
-    @PostMapping(consumes = MediaType.APPLICATION_XML_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Claim> createClaim(@RequestBody Claim claim) {
-        return new ResponseEntity<>(claimService.createClaim(claim), HttpStatus.OK);
+    @GetMapping("/getAll")
+    public List<Claim> getAllClaims() {
+        return claimService.getAllClaims();
     }
 
-    @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Claim> updateClaim(@PathVariable(value = "id") Long id, @RequestBody Claim claim) {
-        return new ResponseEntity<>(claimService.updateClaim(id, claim), HttpStatus.OK);
+
+    @PostMapping("/addClaim")
+    public Claim createClaim(@RequestBody Claim claim) {
+        return claimService.createClaim(claim);
     }
 
-    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> deleteClaim(@PathVariable(value = "id") Long id) {
-        return new ResponseEntity<>(claimService.deleteClaim(id), HttpStatus.OK);
+    @PutMapping("updateClaim/{id}")
+    public  Claim updateClaim(@PathVariable("id") Long id,@RequestBody Claim claim){
+        return claimService.updateClaim(id,claim);
+    }
+
+    @DeleteMapping("deleteClaim/{id}")
+    public void deleteClaim(@PathVariable(value = "id") Long id) {
+         claimService.deleteClaim(id);
     }
 }
