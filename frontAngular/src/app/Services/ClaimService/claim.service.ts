@@ -11,14 +11,14 @@ export class ClaimService {
  
   claims:Claim[]=[];
   urlApi=environment.baseUrl+'claims';
-  url='http://localhost:8084/claims';  
+  url='http://localhost:8089/claims';  
 
   constructor(private httpClient:HttpClient) { }
 
   /********************************Get Claims************************************/
   getAllClaims(): Observable<Claim[]>{
 
-    return this.httpClient.get<Claim[]>(this.urlApi+'/getAll')
+    return this.httpClient.get<Claim[]>(this.url+'/getAll')
   }
 
   /********************************Add Claim************************************/

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "AppEvents", url="http://localhost:8090")
+@FeignClient(name = "AppEvents", url="http://AppEvents:8090")
 public interface EventService {
     @GetMapping("/events/org/{orgId}")
     public List<Event> getEventsByOrganization(@PathVariable Long orgId);

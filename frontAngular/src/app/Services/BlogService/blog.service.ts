@@ -31,7 +31,7 @@ export class BlogService {
   /********************************Get Blogs************************************/
   getAllBlogs(): Observable<Blog[]>{
  
-    return this.http.get<Blog[]>(this.urlApi+'/') 
+    return this.http.get<Blog[]>(this.url+'/') 
     }
 
   /********************************Update Blog************************************/

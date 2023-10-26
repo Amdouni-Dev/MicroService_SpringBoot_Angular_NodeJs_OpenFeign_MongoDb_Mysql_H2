@@ -14,7 +14,7 @@ services:
 
   object:
     container_name: msobject
-    build: .\msobject
+    build: msobject
     ports:
       - "8760:8082"
     image: "msobject"
@@ -59,7 +59,7 @@ services:
   Event:
     container_name: EventMSContainer
     image: "image_ms_docker_event_project"
-    build: .\EventProject
+    build: EventProject
     ports:
       - "8040:8040"
     environment:
@@ -78,7 +78,9 @@ services:
       - db-mysql
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db-mysql:3307/dbclaims?createDatabaseIfNotExist=true&userSSL=false&max_allowed_packet=15728640
-
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://serviceregistry:8761/eureka/
   Gateway:
     container_name: gateway
     build: API_Gateway_Server

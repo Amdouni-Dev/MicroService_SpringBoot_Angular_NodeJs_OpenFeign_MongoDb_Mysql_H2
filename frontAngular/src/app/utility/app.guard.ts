@@ -10,6 +10,7 @@ import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
     providedIn: 'root',
 })
 export class AuthGuard extends KeycloakAuthGuard {
+     user: any;
     constructor(
         protected readonly router: Router,
         protected readonly keycloak: KeycloakService
@@ -31,8 +32,8 @@ export class AuthGuard extends KeycloakAuthGuard {
         // Allow the user to proceed if no additional roles are required to access the route.
         if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
             // Get user information from Keycloak and store it in sessionStorage
-            const user = await this.keycloak.loadUserProfile();
-            window.sessionStorage.setItem('USER_KEY', JSON.stringify(user));
+            this.user = await this.keycloak.loadUserProfile();
+            window.sessionStorage.setItem('USER_KEY', JSON.stringify(this.user));
                 this.saveUser(this.keycloak);
             return true;
         }
@@ -41,7 +42,7 @@ export class AuthGuard extends KeycloakAuthGuard {
         
     }
     public saveUser(keycloakService:KeycloakService): void {
-    
+        window.sessionStorage.setItem("username", JSON.stringify(this.user));
        if (keycloakService.getUserRoles().includes("user-role")) {
 
     window.sessionStorage.removeItem("USER_KEY");
@@ -54,7 +55,7 @@ export class AuthGuard extends KeycloakAuthGuard {
        
       }
 
-public getRole(): any {
+    public getRole(): any {
         const user = window.sessionStorage.getItem("USER_KEY");
         if (user) {
           return user;

@@ -8,7 +8,7 @@ var router = express.Router();
 router.post('/user',keycloak.protect('user'),function(req,res){
     //Create User Object
     const user = new User({
-        userid: req.body.userid,
+       
         firstName: req.body.firstName,
         lastName: req.body.lastName
     });
@@ -23,7 +23,7 @@ router.post('/user',keycloak.protect('user'),function(req,res){
 
 //Find a user
 router.get('/user/:id', keycloak.protect('admin'),function(req,res){
-    User.find({userid:req.params.id})
+    User.find({userid:req.params._id})
     .then(user => {
         if(!user) {
             return res.status(404).send({
@@ -64,7 +64,7 @@ router.put('/user', keycloak.protect('user'),function(req,res){
 
 //Delete a user
 router.delete('/user/:id',keycloak.protect('admin'),function (req,res){
-    User.findOneAndDelete({userid:req.params.id})
+    User.findOneAndDelete({userid:req.params._id})
     .then(user => {
         if(!user) {
             return res.status(404).send({

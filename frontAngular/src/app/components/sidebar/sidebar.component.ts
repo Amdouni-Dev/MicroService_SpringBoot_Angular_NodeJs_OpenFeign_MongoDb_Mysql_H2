@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { AuthGuard } from "app/utility/app.guard";
 import { KeycloakService } from "keycloak-angular";
 
 declare const $: any;
@@ -41,12 +42,18 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
-
-  constructor(private keycloakService: KeycloakService) { }
+  email: any;
+  username: any;
+  usernameObject: any;
+  constructor(private keycloakService: KeycloakService,private auth: AuthGuard) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter((menuItem) => menuItem);
     this.initializeUserOptions();
+    this.username = window.sessionStorage.getItem("username");
+    this.usernameObject = JSON.parse(this.username);
+
+
   }
   isMobileMenu() {
     if ($(window).width() > 991) {
@@ -61,7 +68,6 @@ private initializeUserOptions(): void {
     this.user = this.keycloakService.getUsername();
     console.log(this.keycloakService.getUserRoles());
 
-   
 
     if (this.keycloakService.getUserRoles().includes(roleToFind)) {
     

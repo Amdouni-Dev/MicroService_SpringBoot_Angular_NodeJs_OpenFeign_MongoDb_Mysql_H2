@@ -29,13 +29,12 @@ mongoose.connect('mongodb://127.0.0.1:27017/users', {
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 const keycloak = require('./config/keycloak-config.js').initKeycloak();
-// app.use(keycloak.middleware());
+app.use(keycloak.middleware());
 // //test
-// var testController = require('./controller/test-controller.js');
-// app.use('/test', testController);
+var testController = require('./controller/test-controller.js');
+app.use('/test', testController);
 // //user
-// const apicontroller = require('./controller/user-controller.js');
-// app.use(apicontroller);
+
 // app.get('/', function(req, res){
 //     res.send("Server is up!");
 // });
@@ -124,7 +123,8 @@ async function getAccessToken(username, password) {
 
   
   
-
+  const apicontroller = require('./controller/user-controller.js');
+  app.use(apicontroller);
 
 
 
