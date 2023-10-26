@@ -9,5 +9,5 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  title = 'keycloak-integration';
 }

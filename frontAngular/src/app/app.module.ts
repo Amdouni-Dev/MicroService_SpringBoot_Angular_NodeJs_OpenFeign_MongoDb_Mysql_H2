@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NgModule } from "@angular/core";
-// import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { APP_INITIALIZER, NgModule } from "@angular/core";
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app.routing";
@@ -31,6 +31,9 @@ import { ObjectModule } from "./Admin/Object/object.module";
 import { ConfirmDialogComponent } from "./Admin/Blog/confirm-dialog/confirm-dialog.component";
 import { ConfirmationDialogComponent } from "./Admin/Blog/confirmation-dialog/confirmation-dialog.component";
 
+import { initializeKeycloak } from '../app/utility/app.init';
+import { HomeModule } from "./Admin/home/home.module";
+
 
 
 @NgModule({
@@ -40,7 +43,12 @@ import { ConfirmationDialogComponent } from "./Admin/Blog/confirmation-dialog/co
  ConfirmDialogComponent,
  ConfirmationDialogComponent,
     ],  
-    providers: [],
+    providers: [  {
+        provide: APP_INITIALIZER,
+        useFactory: initializeKeycloak,
+        multi: true,
+        deps: [KeycloakService],
+      },],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
@@ -69,11 +77,10 @@ import { ConfirmationDialogComponent } from "./Admin/Blog/confirmation-dialog/co
         MatDialogModule,
         MatTableModule,
         MatInputModule, 
-      
-      
+        KeycloakAngularModule,
         MatCardModule,     
         MatTooltipModule,
-        DragDropModule,
+        DragDropModule
     ]
 })
 export class AppModule {}

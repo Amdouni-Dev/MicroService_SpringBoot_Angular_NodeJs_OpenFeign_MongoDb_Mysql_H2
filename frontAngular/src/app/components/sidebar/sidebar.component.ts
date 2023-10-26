@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { KeycloakService } from "keycloak-angular";
 
 declare const $: any;
+const roleToFind = 'admin-role';
 declare interface RouteInfo {
   path: string;
   title: string;
@@ -20,8 +22,8 @@ export const ROUTES: RouteInfo[] = [
 
   { path: "/Blog", title: "Blogs", icon: "wysiwyg", class: "" },
 
-
   
+    
 
   // {
   //   path: "/table-list",
@@ -40,10 +42,11 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() {}
+  constructor(private keycloakService: KeycloakService) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter((menuItem) => menuItem);
+    this.initializeUserOptions();
   }
   isMobileMenu() {
     if ($(window).width() > 991) {
@@ -51,4 +54,32 @@ export class SidebarComponent implements OnInit {
     }
     return true;
   }
+
+  user = '';
+
+private initializeUserOptions(): void {
+    this.user = this.keycloakService.getUsername();
+    console.log(this.keycloakService.getUserRoles());
+
+   
+
+    if (this.keycloakService.getUserRoles().includes(roleToFind)) {
+    
+        console.log('C\'est un admin-role');
+        
+      } else {
+        console.log('C\'est un user-role');
+      }
+
+
+
+
+
+  }
+
+  logout(): void {
+    this.keycloakService.logout('http://localhost:4200');
+  }
+
+  
 }
