@@ -24,12 +24,14 @@ import("./Admin/Blog/blog.module").then((m) => m.BlogModule), canActivate: [Auth
  
 
 {path: "Claim",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
-          import("./Admin/Claim/claim.module").then((m) => m.ClaimModule), canActivate: [AuthGuard]},],
+          import("./Admin/Claim/claim.module").then((m) => m.ClaimModule), canActivate: [AuthGuard] ,data: {
+            roles: ['admin'] 
+          }},],
   },
 
 
   {path: "Event",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>
-          import("./Admin/Event/equipe.module").then((m) => m.EquipeModule), canActivate: [AuthGuard]},],
+          import("./Admin/Event/equipe.module").then((m) => m.EquipeModule), canActivate: [AuthGuard] ,},],
   },
 
   {path: "Organization",component: AdminLayoutComponent,children: [{path: "",loadChildren: ()=>

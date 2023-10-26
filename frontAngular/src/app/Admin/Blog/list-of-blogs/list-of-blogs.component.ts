@@ -12,6 +12,7 @@ import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog
 import {ConfirmDialogModel} from "../confirmation-dialog/confirmation-dialog.component";
 import {AddComponent} from "../add/add.component";
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { AuthGuard } from 'app/utility/app.guard';
 
 @Component({
   selector: 'app-list-of-blogs',
@@ -35,7 +36,7 @@ export class ListOfBlogsComponent implements OnInit {
   showUpdate=false;
   clickedAdd : boolean = false;
   blogBinding: any;
-
+  currentUser:any;
   searchText:string='';
   result: boolean;
 
@@ -52,12 +53,12 @@ export class ListOfBlogsComponent implements OnInit {
 
 
   constructor(private router: Router,private serviceC: BlogService, private formBuilder: FormBuilder,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,private auth: AuthGuard) { }
 
 
   ngOnInit(): void {
     this.ListOfBlogs({page:"0", size:"5"})
-   
+    this.currentUser = this.auth.getRole();
   }
   
   showUpdateForm(f:any){

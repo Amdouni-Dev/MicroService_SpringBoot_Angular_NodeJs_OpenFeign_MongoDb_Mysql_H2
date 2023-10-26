@@ -27,7 +27,7 @@ export class EventService {
   /********************************Get Equipe************************************/
   getEquipes(): Observable<Event[]>{
     console.log("Get Equipes********************************")
-    return this.http.get<Event[]>("http://localhost:8090/events/getAll/")
+    return this.http.get<Event[]>("http://localhost:8040/events/getAll/")
 
   }
 

@@ -8,8 +8,8 @@
     
 
       <div class="card">
-        <div class="card-header card-header-danger">
-        
+        <div class="card-header card-header-danger" *ngIf="currentUser === 'admin' ">
+     
           <button
             [ngClass]="['btn', 'btn-outline-dark']"
             (click)="onCreate()"
@@ -46,7 +46,7 @@
             <th>Description</th>
             <th>Date de début</th>
             <th>Date de fin</th>
-            <th>Actions</th>
+            <th *ngIf="currentUser === 'admin'">Actions</th>
             </thead>
             <tbody>
               <tr *ngFor="let e of equipes ">
@@ -59,7 +59,7 @@
 <!--                <td>{{ e.niveau }}</td>-->
                
               
-                <td class="td-actions text-left">
+                <td class="td-actions text-left" *ngIf="currentUser === 'admin' ">
                   <button
                     mat-raised-button
                     type="button"

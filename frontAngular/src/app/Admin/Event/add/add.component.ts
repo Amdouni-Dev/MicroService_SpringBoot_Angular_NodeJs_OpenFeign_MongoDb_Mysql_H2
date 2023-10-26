@@ -54,7 +54,7 @@ export class AddComponent implements OnInit {
 
     submit() {
         this.event = this.eventForm.value;
-        this.serviceC.saveEvent(this.event).subscribe((c) => {
+        this.serviceC.saveEvent(this.event).subscribe((c) => { 
             this.list.emit(this.event);
             this.reloadComponent();
             console.log('Success !', c);

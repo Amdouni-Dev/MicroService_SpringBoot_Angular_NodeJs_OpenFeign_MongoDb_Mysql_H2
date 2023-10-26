@@ -15,7 +15,7 @@ import { ObjectService } from 'app/Services/ObjectService/objectservice.service'
 import { ConfirmDialogModel } from 'app/Admin/Blog/confirmation-dialog/confirmation-dialog.component';
 import { ConfirmDialogComponent } from 'app/Admin/Blog/confirm-dialog/confirm-dialog.component';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
+import { AuthGuard } from 'app/utility/app.guard';
 @Component({
   selector: 'app-list-of-objects',
   templateUrl: './list-of-objects.component.html',
@@ -51,13 +51,15 @@ export class ListOfObjectsComponent implements OnInit {
   totalElements: any;
   pageIndex: any;
   pageSize: any;
+  currentUser:any;
 
 
   constructor(private router: Router,private serviceC: ObjectService, private formBuilder: FormBuilder,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,private auth: AuthGuard) { }
 
 
   ngOnInit(): void {
+    this.currentUser = this.auth.getRole();
     this.ListOfObjects({page:"0", size:"5"})
    
   }

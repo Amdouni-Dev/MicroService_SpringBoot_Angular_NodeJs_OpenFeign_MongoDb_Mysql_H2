@@ -21,22 +21,45 @@ export class AuthGuard extends KeycloakAuthGuard {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Promise<boolean> {
-        // Force the user to log in if currently unauthenticated.
         if (!this.authenticated) {
             await this.keycloak.login({
                 redirectUri: window.location.origin + state.url,
             });
         }
-
-        // Get the roles required from the route.
         const requiredRoles = route.data.roles;
 
-        // Allow the user to to proceed if no additional roles are required to access the route.
+        // Allow the user to proceed if no additional roles are required to access the route.
         if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
+            // Get user information from Keycloak and store it in sessionStorage
+            const user = await this.keycloak.loadUserProfile();
+            window.sessionStorage.setItem('USER_KEY', JSON.stringify(user));
+                this.saveUser(this.keycloak);
             return true;
         }
-
-        // Allow the user to proceed if all the required roles are present.
+       
         return requiredRoles.every((role) => this.roles.includes(role));
+        
     }
+    public saveUser(keycloakService:KeycloakService): void {
+    
+       if (keycloakService.getUserRoles().includes("user-role")) {
+
+    window.sessionStorage.removeItem("USER_KEY");
+        window.sessionStorage.setItem("USER_KEY", "user");
+    
+  } else {
+    window.sessionStorage.removeItem("USER_KEY");
+        window.sessionStorage.setItem("USER_KEY", "admin");
+  }
+       
+      }
+
+public getRole(): any {
+        const user = window.sessionStorage.getItem("USER_KEY");
+        if (user) {
+          return user;
+        }
+    
+        return null;
+      }
 }

@@ -15,7 +15,7 @@ import {ConfirmDialogModel} from "../../Blog/confirmation-dialog/confirmation-di
 
 import { Organization } from 'app/models/Organization';
 import { OrganizationserviceService } from 'app/Services/ServicesOrganization/organizationservice.service';
-
+import { AuthGuard } from 'app/utility/app.guard';
 @Component({
   selector: 'app-list-of-organizations',
   templateUrl: './list-of-organizations.component.html',
@@ -38,7 +38,7 @@ export class ListOfOrganizationsComponent implements OnInit {
   showUpdate=false;
   clickedAdd : boolean = false;
   organizationBinding: any;
-
+  currentUser:any;
   searchText:string='';
   result: boolean;
 
@@ -53,10 +53,11 @@ export class ListOfOrganizationsComponent implements OnInit {
 
 
   constructor(private router: Router,private serviceC: OrganizationserviceService, private formBuilder: FormBuilder,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,private auth: AuthGuard) { }
 
 
   ngOnInit(): void {
+    this.currentUser = this.auth.getRole();
     this.ListOfOrganizations({page:"0", size:"5"})
    
   }

@@ -126,46 +126,7 @@ async function getAccessToken(username, password) {
   
 
 
-// const WebSocket = require('ws');
-// const server = new WebSocket.Server({ port: 3200 }); // Utilisez le port de votre choix
 
-// server.on('connection', (socket) => {
-//     console.log('Client connected to WebSocket');
-
-//     socket.on('message', (message) => {
-//         console.log('Received message:', message);
-        
-//         // Traitez les données d'utilisateurs reçues ici
-//         var data = JSON.parse(message);
-//         console.log('Données d\'utilisateurs reçues:', data);
-
-//         // Vous pouvez les enregistrer dans votre base de données MongoDB si nécessaire
-//     });
-
-//     socket.on('close', () => {
-//         console.log('Client disconnected from WebSocket');
-//     });
-
-
-    
-// });
-
-// app.get('/api/users', (req, res) => {
-//     const userData = req.body;
-
-//     // Traitez les données d'utilisateur ici, vous pouvez également les envoyer via WebSocket si nécessaire
-//     console.log('Données d\'utilisateur reçues via API :', userData);
-
-//     res.json({ message: 'Données d\'utilisateur reçues avec succès via l\'API' });
-// });
-
-
-
-
-app.use('/secure-path', keycloak.protect('admin'));
-
-// Proxy inverse pour rediriger le chemin vers http://localhost:8989
-app.use('/secure-path', createProxyMiddleware({ target: 'http://localhost:8989', changeOrigin: true }));
 
 
 

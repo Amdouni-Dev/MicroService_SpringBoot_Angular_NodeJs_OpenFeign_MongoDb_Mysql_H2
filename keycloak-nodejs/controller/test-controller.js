@@ -18,4 +18,6 @@ router.get('/all-user', keycloak.protect(['user','admin']), (req, res) => {
     res.send("Hello All User");
 });
 
+
+
 module.exports = router;

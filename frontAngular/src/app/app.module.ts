@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { APP_INITIALIZER, NgModule } from "@angular/core";
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
@@ -48,7 +48,8 @@ import { HomeModule } from "./Admin/home/home.module";
         useFactory: initializeKeycloak,
         multi: true,
         deps: [KeycloakService],
-      },],
+      }, 
+    ],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,

@@ -16,6 +16,7 @@ import { Event } from 'app/models/Event';
 import { EventService } from 'app/Services/ServicesEvent/event.service';
 import { ConfirmDialogComponent } from 'app/Admin/Blog/confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogModel } from 'app/Admin/Blog/confirmation-dialog/confirmation-dialog.component';
+import { AuthGuard } from 'app/utility/app.guard';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -52,13 +53,15 @@ export class ListOfEventsComponent implements OnInit {
   totalElements: any;
   pageIndex: any;
   pageSize: any;
-
+  currentUser:any;
 
   constructor(private router: Router, private serviceC: EventService, private formBuilder: FormBuilder,
-              private dialog: MatDialog,private _routerUp: Router) { }
+              private dialog: MatDialog,private _routerUp: Router,private auth: AuthGuard ) { }
 
 
   ngOnInit(): void {
+    this.currentUser = this.auth.getRole();
+
     this.ListOfContrats({page:"0", size:"5"})
 
   }
